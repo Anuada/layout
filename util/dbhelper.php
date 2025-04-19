@@ -2,21 +2,21 @@
 
 class DbHelper
 {
-    private $hostname = "127.0.0.1";
-    private $username = "root";
-    private $password = "";
-    private $database = "insert";
-    private $conn;
+   private $hostname ="127.0.0.1";
+   private $username="root";
+   private $password ="";
+   private $database ="insert";
+   private $conn;
 
-    public function __construct()
-    {
-        $this->conn = new mysqli($this->hostname, $this->username, $this->password, $this->database);
-    }
+   public function __construct()
+   {
+    $this->conn = new mysqli($this->hostname, $this->username, $this->password, $this->database);
+   }
 
-    public function __destruct()
-    {
-        $this->conn->close();
-    }
+   public function __destruct()
+   {
+    $this->conn->close();
+   }
 
     public function getAllRecords($table)
     {
@@ -61,13 +61,13 @@ class DbHelper
 
     public function addrecord($table, $args)
     {
-        $keys = array_keys($args);
-        $values = array_values($args);
-        $key = implode("`, `", $keys);
+        $keys = array_keys($args);// get all the keys column names
+        $values = array_values($args);// get the all the values inserted to database
+        $key = implode("`, `", $keys);// turn the array into a string with specific formating
         $value = implode("', '", $values);
-        $sql = "INSERT INTO `$table` (`$key`) VALUES ('$value')";
-        $this->conn->query($sql);
-        return $this->conn->affected_rows;
+        $sql = "INSERT INTO `$table` (`$key`) VALUES ('$value')";// sql query
+        $this->conn->query($sql);//Runs the SQL query using the database connection stored in $this->conn.
+        return $this->conn->affected_rows;// Returns the number of rows affected by the query (usually 1 if successful).
     }
 
     public function updateRecord($table, $args)
