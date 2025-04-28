@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Responsive TopNav</title>
+  <title>Responsive TopNav with Hamburger</title>
   <style>
-    /* Basic page settings */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -15,9 +14,10 @@
     .topnav {
       overflow: hidden;
       background-color: #333;
+      position: relative;
     }
 
-    /* Links inside the navbar */
+    /* Navbar links */
     .topnav a {
       float: left;
       display: block;
@@ -28,23 +28,41 @@
       font-size: 17px;
     }
 
-    /* Change color on hover */
     .topnav a:hover {
       background-color: #ddd;
       color: black;
     }
 
-    /* Active/current link */
     .topnav a.active {
       background-color: #04AA6D;
       color: white;
     }
 
-    /* When screen is small (mobile), stack the links vertically */
+    /* Hamburger icon (hidden on desktop) */
+    .topnav .icon {
+      display: none;
+    }
+
+    /* When screen size is 600px or less */
     @media screen and (max-width: 600px) {
-      .topnav a {
+      .topnav a {display: none;} /* hide links */
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+    }
+
+    /* When the user clicks on the hamburger menu (responsive class) */
+    @media screen and (max-width: 600px) {
+      .topnav.responsive {position: relative;}
+      .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .topnav.responsive a {
         float: none;
-        width: 100%;
+        display: block;
         text-align: left;
       }
     }
@@ -52,19 +70,35 @@
 </head>
 <body>
 
-<!-- Topnav bar -->
-<div class="topnav">
+<!-- Topnav -->
+<div class="topnav" id="myTopnav">
   <a href="#" class="active">Home</a>
   <a href="#">About</a>
   <a href="#">Services</a>
   <a href="#">Contact</a>
+  <!-- Hamburger menu icon -->
+  <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+    &#9776;
+  </a>
 </div>
 
 <!-- Page content -->
 <div style="padding:16px">
-  <h2>Responsive TopNav Example</h2>
-  <p>Resize the browser window to see the effect.</p>
+  <h2>Responsive TopNav with Hamburger Menu</h2>
+  <p>Resize your browser window to see it in action!</p>
 </div>
+
+<!-- JavaScript for toggle -->
+<script>
+function toggleMenu() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
 
 </body>
 </html>
