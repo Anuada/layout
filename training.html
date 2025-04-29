@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trendoza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #000;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .top-bar {
+      background-color: #0a5a1a;
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      padding: 6px 15px;
+      gap: 8px;
+    }
+    .top-bar .contact {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 400;
+    }
+    .top-bar .spacer {
+      flex-grow: 1;
+    }
+    .top-bar .icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 18px;
+    }
+    .top-bar .icons .cart {
+      position: relative;
+      cursor: pointer;
+    }
+    .top-bar .icons .cart .badge {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #d9b84a;
+      color: #0a5a1a;
+      font-weight: 700;
+      font-size: 12px;
+      border-radius: 50%;
+      padding: 2px 6px;
+    }
+    .logo-bar {
+      background-color: #0a5a1a;
+      text-align: center;
+      padding: 10px 0 12px;
+    }
+    .logo-bar h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: #d9b84a;
+      letter-spacing: 2px;
+    }
+    nav {
+      margin: 20px 0 10px;
+      text-align: center;
+    }
+    nav a {
+      font-size: 14px;
+      color: #000;
+      margin: 0 15px;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+    }
+    nav a:hover,
+    nav a.active {
+      border-bottom: 1px solid #000;
+    }
+    .featured-section {
+      max-width: 960px;
+      margin: 0 auto 30px;
+      padding: 0 15px;
+    }
+    .featured-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    .featured-section p {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .products {
+      max-width: 960px;
+      margin: 0 auto 30px;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: #fff;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      border-radius: 4px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+    }
+    .view-all-btn {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 40px;
+      background-color: #d9b84a;
+      color: #0a5a1a;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .view-all-btn:hover {
+      background-color: #c0a93e;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 15px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .card {
+      flex: 1 1 0;
+      position: relative;
+      color: #000;
+      min-height: 250px;
+      overflow: hidden;
+    }
+    .card img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+    }
+    .card-content {
+      position: relative;
+      z-index: 1;
+      max-width: 280px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 30px 25px;
+      background: #fff;
+    }
+    .card-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card-content p {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background: #dcb94a;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      padding: 8px 30px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .special .card-content {
+      background: transparent;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+
+    .footer-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 40px 20px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background-color: #0a5a1a;
+    }
+    .footer-left {
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+    .footer-left h1 {
+      font-size: 36px;
+      color: #c9a23a;
+      margin-bottom: 20px;
+    }
+    .footer-left p {
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    .stay-connected {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .social-icons a {
+      display: inline-flex;
+      width: 26px;
+      height: 26px;
+      align-items: center;
+      justify-content: center;
+      background-color: #3a6b3a;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 14px;
+    }
+    .footer-right {
+      flex: 1 1 300px;
+      max-width: 600px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .site-navigation {
+      display: flex;
+      gap: 80px;
+      font-size: 12px;
+      color: #fff;
+    }
+    .nav-column {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-column h2 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 4px;
+    }
+    .nav-column a {
+      font-size: 11px;
+      color: #fff;
+      margin: 6px 0;
+    }
+    .nav-column a:hover {
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 11px;
+      color: #fff;
+      margin-top: 30px;
+    }
+    .accessibility-icon {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .container,
+      .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-right {
+        justify-content: flex-start;
+        margin-top: 30px;
+        max-width: 100%;
+      }
+      .site-navigation {
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 400px) {
+      .site-navigation {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="contact">
+      <i class="fas fa-phone-alt"></i>
+      <span>Contact Us</span>
+    </div>
+    <div class="spacer"></div>
+    <div class="icons">
+      <div class="cart" tabindex="0">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge">0</span>
+      </div>
+      <div class="user" tabindex="0">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo -->
+  <header class="logo-bar">
+    <h1>TREND<span style="color:#d9b84a;">OZA</span></h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="active" href="#">HOME</a>
+    <a href="#">ABOUT US</a>
+    <a href="#">NEW ARRIVALS</a>
+    <a href="#">JEWELRIES</a>
+    <a href="#">ACCESSORIES</a>
+    <a href="#">CONTACT US</a>
+  </nav>
+
+  <!-- Featured Section -->
+  <section class="featured-section">
+    <h2>FEATURED PRODUCTS</h2>
+    <p>Explore most loved items by our customers.</p>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="products">
+    <article class="product-card">
+      <img src="https://storage.googleapis.com/a1aa/image/a05e2a69-5fc2-4d72-a4d4-10febf9e43ef.jpg" alt="Green earrings"/>
+    </article>
+    <article class="product-card">
+      <img src="https://storage.googleapis.com/a1aa/image/952ce94b-0451-4db6-699d-031916bf2311.jpg" alt="Layered necklace"/>
+    </article>
+    <article class="product-card">
+      <img src="https://storage.googleapis.com/a1aa/image/4b90a4a2-bfd2-4c42-4c18-56fea63aa381.jpg" alt="Gold ring"/>
+    </article>
+    <article class="product-card">
+      <img src="https://storage.googleapis.com/a1aa/image/fc3b60ea-8311-4d69-34ba-28ed08f9f252.jpg" alt="Open bracelet"/>
+    </article>
+  </section>
+
+  <button class="view-all-btn">VIEW ALL PRODUCTS</button>
+
+  <!-- Cards -->
+  <div class="container">
+    <div class="card">
+      <img src="https://storage.googleapis.com/a1aa/image/6d0c6e40-4412-43de-77f7-d58042ff5a39.jpg" alt="Recommend">
+      <div class="card-content">
+        <h2>RECOMMEND<br/>OUR PRODUCTS</h2>
+        <p>Tell your loved ones and friends about our products today!</p>
+        <button class="btn">CLICK HERE</button>
+      </div>
+    </div>
+    <div class="card special">
+      <img src="https://storage.googleapis.com/a1aa/image/d2260b34-6ebd-4c31-0ff1-90768424457b.jpg" alt="Special Occasion">
+      <div class="card-content">
+        <h2>SPECIAL<br/>OCCASIONS</h2>
+        <p>Make your day extra special with our timeless pieces for every celebration.</p>
+        <button class="btn">SHOP NOW</button>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section -->
+<footer class="footer-container">
+    <div class="footer-left">
+      <h1>TREND<span style="color:#d9b84a;">OZA</span></h1>
+      <p>Your go-to shop for timeless jewelry and accessories that complete your look with elegance and charm.</p>
+      <div class="stay-connected">Stay connected with us:</div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  
+    <div class="footer-right">
+      <div class="site-navigation">
+        <div class="nav-column">
+          <h2>Shop</h2>
+          <a href="#">New Arrivals</a>
+          <a href="#">Jewelry</a>
+          <a href="#">Accessories</a>
+        </div>
+        <div class="nav-column">
+          <h2>Company</h2>
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">FAQs</a>
+        </div>
+        <div class="nav-column">
+          <h2>Help</h2>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <br>
+  
+    <div class="footer-bottom">
+      &copy; 2025 TrendOza. All rights reserved.
+    </div>
+  </footer>
+  
+  <!-- Accessibility Icon -->
+  <div class="accessibility-icon">
+    <i class="fas fa-universal-access"></i>
+  </div>
+  
+
+</body>
+</html>
