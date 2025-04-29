@@ -97,10 +97,12 @@
       font-weight: 700;
       font-size: 28px;
       margin-bottom: 6px;
+      text-align: center;
     }
     .featured-section p {
       font-size: 12px;
       margin-bottom: 20px;
+      text-align: center;
     }
     .products {
       max-width: 960px;
@@ -140,14 +142,13 @@
       background-color: #c0a93e;
     }
 
+    /* Card container */
     .container {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 15px;
+      max-width: 900px;
+      margin: 20px auto;
       display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      align-items: center;
+      gap: 20px;
+      padding: 0 10px;
     }
     .card {
       flex: 1 1 0;
@@ -203,118 +204,246 @@
       }
     }
 
-    .footer-container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 40px 20px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      background-color: #0a5a1a;
-    }
-    .footer-left {
-      flex: 1 1 300px;
-      max-width: 400px;
-    }
-    .footer-left h1 {
-      font-size: 36px;
-      color: #c9a23a;
-      margin-bottom: 20px;
-    }
-    .footer-left p {
-      font-size: 12px;
-      line-height: 1.5;
-      margin-bottom: 30px;
-    }
-    .stay-connected {
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-    .social-icons a {
-      display: inline-flex;
-      width: 26px;
-      height: 26px;
-      align-items: center;
-      justify-content: center;
-      background-color: #3a6b3a;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 14px;
-    }
-    .footer-right {
-      flex: 1 1 300px;
-      max-width: 600px;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .site-navigation {
-      display: flex;
-      gap: 80px;
-      font-size: 12px;
-      color: #fff;
-    }
-    .nav-column {
-      display: flex;
-      flex-direction: column;
-    }
-    .nav-column h2 {
-      font-size: 14px;
-      margin-bottom: 8px;
-      border-bottom: 1px solid #fff;
-      padding-bottom: 4px;
-    }
-    .nav-column a {
-      font-size: 11px;
-      color: #fff;
-      margin: 6px 0;
-    }
-    .nav-column a:hover {
-      text-decoration: underline;
-    }
-    .footer-bottom {
-      text-align: center;
-      font-size: 11px;
-      color: #fff;
-      margin-top: 30px;
-    }
-    .accessibility-icon {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .container,
+    .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 0 15px;
+      }
+      
+      .image-wrapper img {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      
+      .text-wrapper {
+        flex: 1;
+        min-width: 280px;
+        max-width: 480px;
+      }
+      
+      .text-wrapper .welcome {
+        font-size: 14px;
+        color: #0a5a1a;
+        font-weight: 700;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+      
+      .text-wrapper h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        margin: 5px 0 15px;
+        color: #d9b84a;
+      }
+      
+      .text-wrapper p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 0 15px;
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .image-box {
+        background: #fff;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.05);
+        padding: 20px;
+        flex: 1 1 200px;
+        max-width: 220px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .image-box img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .image-box:first-child {
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+      }
+      .text-content {
+        flex: 2 1 300px;
+        max-width: 460px;
+      }
+      .text-content h2 {
+        font-weight: 400;
+        font-size: 24px;
+        margin: 0 0 12px 0;
+      }
+      .text-content p {
+        font-weight: 300;
+        font-size: 14px;
+        margin: 0 0 20px 0;
+        line-height: 1.4;
+      }
+      .btn {
+        background-color: #e1bc4f;
+        border: none;
+        color: #fff;
+        font-weight: 400;
+        font-size: 13px;
+        padding: 8px 20px;
+        cursor: pointer;
+        border-radius: 2px;
+        font-family: 'Merriweather', serif;
+        box-shadow: none;
+        text-align: center;
+        display: inline-block;
+      }
+      .btn:hover,
+      .btn:focus {
+        background-color: #c9a93f;
+        outline: none;
+      }
+      @media (max-width: 720px) {
+        .container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .image-box {
+          max-width: 100%;
+          width: 100%;
+          margin-bottom: 20px;
+          padding: 15px;
+        }
+        .text-content {
+          max-width: 100%;
+          flex: none;
+        }
+      }
+
       .footer-container {
-        flex-direction: column;
-        align-items: flex-start;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 40px 20px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: #0a5a1a;
+      }
+      .footer-left {
+        flex: 1 1 300px;
+        max-width: 400px;
+      }
+      .footer-left h1 {
+        font-size: 36px;
+        color: #c9a23a;
+        margin-bottom: 20px;
+      }
+      .footer-left p {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+      .stay-connected {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+      .social-icons a {
+        display: inline-flex;
+        width: 26px;
+        height: 26px;
+        align-items: center;
+        justify-content: center;
+        background-color: #3a6b3a;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 14px;
       }
       .footer-right {
-        justify-content: flex-start;
-        margin-top: 30px;
-        max-width: 100%;
+        flex: 1 1 300px;
+        max-width: 600px;
+        display: flex;
+        justify-content: flex-end;
       }
       .site-navigation {
-        gap: 40px;
-        flex-wrap: wrap;
+        display: flex;
+        gap: 80px;
+        font-size: 12px;
+        color: #fff;
       }
-    }
-    @media (max-width: 400px) {
-      .site-navigation {
+      .nav-column {
+        display: flex;
         flex-direction: column;
-        gap: 20px;
       }
-    }
+      .nav-column h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 4px;
+      }
+      .nav-column a {
+        font-size: 11px;
+        color: #fff;
+        margin: 6px 0;
+      }
+      .nav-column a:hover {
+        text-decoration: underline;
+      }
+      .footer-bottom {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 14px;
+        color: #ffffff; /* Optional */
+        width: 100%;
+      }
+      
+      .accessibility-icon {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container,
+        .footer-container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .footer-right {
+          justify-content: flex-start;
+          margin-top: 30px;
+          max-width: 100%;
+        }
+        .site-navigation {
+          gap: 40px;
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 400px) {
+        .site-navigation {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+      
   </style>
 </head>
 <body>
@@ -352,13 +481,11 @@
     <a href="#">CONTACT US</a>
   </nav>
 
-  <!-- Featured Section -->
+  <!-- Featured Products -->
   <section class="featured-section">
     <h2>FEATURED PRODUCTS</h2>
     <p>Explore most loved items by our customers.</p>
   </section>
-
-  <!-- Product Grid -->
   <section class="products">
     <article class="product-card">
       <img src="https://storage.googleapis.com/a1aa/image/a05e2a69-5fc2-4d72-a4d4-10febf9e43ef.jpg" alt="Green earrings"/>
@@ -376,7 +503,7 @@
 
   <button class="view-all-btn">VIEW ALL PRODUCTS</button>
 
-  <!-- Cards -->
+  <!-- Recommend and Special Occasions -->
   <div class="container">
     <div class="card">
       <img src="https://storage.googleapis.com/a1aa/image/6d0c6e40-4412-43de-77f7-d58042ff5a39.jpg" alt="Recommend">
@@ -390,13 +517,47 @@
       <img src="https://storage.googleapis.com/a1aa/image/d2260b34-6ebd-4c31-0ff1-90768424457b.jpg" alt="Special Occasion">
       <div class="card-content">
         <h2>SPECIAL<br/>OCCASIONS</h2>
-        <p>Make your day extra special with our timeless pieces for every celebration.</p>
-        <button class="btn">SHOP NOW</button>
+        <p>Make your day extra special with our exquisite pieces.</p>
+        <button class="btn">CLICK HERE</button>
       </div>
     </div>
   </div>
-  <!-- Footer Section -->
-<footer class="footer-container">
+
+  <main class="hero-section" role="main">
+    <div class="image-wrapper">
+      <img alt="Two gold rings with diamonds on white background" height="480" width="480" src="https://storage.googleapis.com/a1aa/image/69b4b3b7-0426-4e83-7cf5-b56d269eb75d.jpg"/>
+    </div>
+    <div class="text-wrapper">
+      <p class="welcome">WELCOME TO</p>
+      <h1>TRENDOZA</h1>
+      <p>
+        Looking for a perfect gift for a loved one or some keepsakes for yourself? You’ve just stumbled on the right page! At
+        <strong>Trendoza</strong>, we aim to be your one-stop shop for unique, elegant jewelry and accessories you can’t find anywhere else. Every piece we have in our store is crafted and designed with you in mind. Whether you want something for everyday wear or any occasion, our vast collection ensures you find the piece of jewelry that suits your taste, style, and budget. Shop our products now!
+      </p>
+    </div>
+  </main>
+  
+  <div class="container" role="main">
+    <div aria-label="Silver earrings with purple stones, textured elongated leaf shape" class="image-box">
+     <img alt="Silver earrings with purple stones, textured elongated leaf shape" height="150" src="https://storage.googleapis.com/a1aa/image/dac02eb4-3b28-4951-cfd7-949def5cdc61.jpg" width="150"/>
+    </div>
+    <div aria-label="Gold earrings with white and purple stones, two oval shapes stacked vertically" class="image-box">
+     <img alt="Gold earrings with white and purple stones, two oval shapes stacked vertically" height="150" src="https://storage.googleapis.com/a1aa/image/50985ed1-6bed-4014-7b0e-5de918555447.jpg" width="150"/>
+    </div>
+    <div class="text-content">
+     <h2>
+      What Sets Us Apart
+     </h2>
+     <p>
+      Why you should choose us? It’s simple — we guarantee the best prices for our items.
+     </p>
+     <button aria-label="Click Here button" class="btn" type="button">
+      Click Here →
+     </button>
+    </div>
+   </div>
+
+   <footer class="footer-container">
     <div class="footer-left">
       <h1>TREND<span style="color:#d9b84a;">OZA</span></h1>
       <p>Your go-to shop for timeless jewelry and accessories that complete your look with elegance and charm.</p>
@@ -436,12 +597,8 @@
       &copy; 2025 TrendOza. All rights reserved.
     </div>
   </footer>
-  
-  <!-- Accessibility Icon -->
-  <div class="accessibility-icon">
-    <i class="fas fa-universal-access"></i>
-  </div>
-  
+
+   
 
 </body>
 </html>
