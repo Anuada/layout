@@ -3,60 +3,108 @@
 <head>
     <title>Calculator</title>
     <style>
-        .calculator {
-            width: 400px;
-            margin: 50px auto;
-            border: 1px solid #ccc;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+        body {
+            background-color:white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-
+        
+        .calculator {
+            width: 360px;
+            margin: 80px auto;
+            background-color:#191B28;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+        
+        .calculator h3 {
+            margin-top: 0;
+            color: white;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         .top-row {
             display: flex;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
-
+        
         #result {
             flex: 1;
-            padding: 10px;
-            font-size: 20px;
+            padding: 15px;
+            font-size: 22px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            background-color: #f8f8f8;
+            color: #333;
         }
-
+        
         .clear {
             width: 60px;
-            height: 44px;
+            height: 60px;
             font-size: 18px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-
+        
+        .clear:hover {
+            background-color: #e60000;
+        }
+        
         .main {
             display: flex;
         }
-
+        
         .numbers {
             display: grid;
-            grid-template-columns: repeat(3, 60px);
+            grid-template-columns: repeat(3, 1fr);
             grid-gap: 10px;
+            flex: 3;
         }
-
+        
         .operators {
             display: flex;
             flex-direction: column;
-            margin-left: 10px;
             gap: 10px;
-        }
-
-        .buttons button {
-            width: 100px;
-            height: 60px;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 10px;
             margin-left: 10px;
-            margin-bottom: 10px;
+            flex: 1;
         }
+        
+        .buttons button {
+            height: 60px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #17A2B7;
+            color: white;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+        
+        .buttons button:hover {
+            background-color: #d4d4d4;
+            transform: scale(1.05);
+        }
+        
+        .calculator equal {
+            background-color: #4caf50;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .equal:hover {
+            background-color: #388e3c;
+        }
+        
 
        
     </style>
@@ -64,6 +112,7 @@
 <body>
 
 <div class="calculator">
+    <h3>My Own Calculator</h3>
     <div class="top-row">
         <input type="text" id="result" disabled>
         <button class="clear">C</button>
@@ -81,13 +130,13 @@
             <button class="number" value="9">9</button>
             <button class="number" value=".">.</button>
             <button class="number" value="0">0</button>
-            <button class="equal">=</button>
+            <button style="background-color: yellow; color:black;" class="equal">=</button>
         </div>
         <div class="operators buttons">
-            <button class="operator" value="+">+</button>
-            <button class="operator" value="-">-</button>
-            <button class="operator" value="*">*</button>
-            <button class="operator" value="/">/</button>
+            <button style="background-color:#007AFF;" class="operator" value="+">+</button>
+            <button style="background-color:#007AFF;" class="operator" value="-">-</button>
+            <button style="background-color:#007AFF;" class="operator" value="*">*</button>
+            <button style="background-color:#007AFF;" class="operator" value="/">/</button>
         </div>
     </div>
 </div>
