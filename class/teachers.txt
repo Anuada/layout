@@ -1,1 +1,0 @@
-a:1:{i:0;a:5:{s:2:"id";s:13:"6826037cabd96";s:4:"name";s:3:"SDA";s:7:"subject";s:7:"DSAFSAF";s:10:"created_at";s:19:"2025-05-15 17:08:44";s:9:"school_id";s:13:"6826037603c1f";}}

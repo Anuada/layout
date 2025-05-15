@@ -1,0 +1,1 @@
+a:1:{i:0;a:5:{s:2:"id";s:13:"68261d458c87c";s:4:"name";s:7:"Marites";s:7:"subject";s:7:"Science";s:10:"created_at";s:19:"2025-05-15 18:58:45";s:9:"school_id";s:13:"68261d36d2538";}}

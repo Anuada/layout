@@ -1,0 +1,1 @@
+a:1:{i:0;a:6:{s:2:"id";s:13:"68261d5a7784c";s:4:"name";s:14:"Ericson Anuada";s:3:"age";s:2:"23";s:5:"grade";s:1:"7";s:10:"created_at";s:19:"2025-05-15 18:59:06";s:10:"teacher_id";s:13:"68261d458c87c";}}
