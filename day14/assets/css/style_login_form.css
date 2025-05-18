@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f3f8ff;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #f9fcff;
+    border-radius: 12px;
+    padding: 24px 28px 32px 28px;
+    width: 380px;
+    box-shadow: none;
+}
+
+.title-top {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    color: #4a90e2;
+    text-align: center;
+    margin: 0 0 4px 0;
+}
+
+.title-bottom {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+label {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #d9e2ec;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9ca3af;
+    outline: none;
+}
+
+input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.btn-login {
+    margin-top: 20px;
+    background-color: #0a6ed1;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 8px 0;
+    width: 140px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 360px) {
+    .container {
+        width: 90vw;
+        padding: 20px 16px 28px 16px;
+    }
+
+    .btn-login {
+        width: 100%;
+    }
+}

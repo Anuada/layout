@@ -1,0 +1,215 @@
+<?php
+
+class DbHelper
+{
+    private $hostname = "127.0.0.1";
+    private $username = "root";
+    private $password = "";
+    private $database = "elev";
+    private $conn;
+
+    public function __construct()
+    {
+        $this->conn = new mysqli($this->hostname, $this->username, $this->password, $this->database);
+    }
+
+    public function __destruct()
+    {
+        $this->conn->close();
+    }
+
+    # Fetch one or more records
+    public function fetchRecords($table, $args = null)
+    {
+        if ($args != null) {
+            $key = array_keys($args);
+            $value = array_values($args);
+            $condition = $this->condition($key, $value, "0", " AND ");
+            $sql = "SELECT * FROM `$table` WHERE $condition";
+        } else {
+            $sql = "SELECT * FROM `$table`";
+        }
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+	//Dashboard for lawyer Booked appointment
+    public function joinLawyerWoman($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "SELECT `woman`.*, `bookinglawyer`.*, `lawyeravailability`.`Avail_startLtime`, `lawyeravailability`.`Avail_EndLtime`, `lawyeravailability`.`Avail_Ldate`
+        FROM `bookinglawyer`
+        JOIN `woman` ON `woman`.`accountId` = `bookinglawyer`.`womanId`
+        JOIN `lawyeravailability` ON `lawyeravailability`.`id` = `bookinglawyer`.`availability_id`
+        WHERE $condition";
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+	//Dashboard for woman Booked appointment
+    public function joinLawyer_Woman($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "SELECT `lawyer`.*, `bookinglawyer`.*, `lawyeravailability`.`Avail_startLtime`, `lawyeravailability`.`Avail_EndLtime`, `lawyeravailability`.`Avail_Ldate`
+        FROM `bookinglawyer`
+        JOIN `lawyer` ON `lawyer`.`accountId` = `bookinglawyer`.`lawyerId`
+        JOIN `lawyeravailability` ON `lawyeravailability`.`id` = `bookinglawyer`.`availability_id`
+        WHERE $condition";
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+
+
+    // Dashboard for lawyer booked appointment
+
+
+    public function joinCounselorWoman($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "SELECT `woman`.*, `bookingcounselor`.* FROM `bookingcounselor` JOIN `woman` ON `woman`.`accountId` = `bookingcounselor`.`womanId` WHERE $condition";
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+	
+	//Dashboard for woman booked counselor
+	
+	public function joinCounselor_Woman($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "SELECT `counselor`.*, `bookingcounselor`.* FROM `bookingcounselor` JOIN `counselor` ON `counselor`.`accountId` = `bookingcounselor`.`counselorId` WHERE $condition";
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+	
+	# // Dashboard for livelihood-provider booked appointment
+	 public function joinLivelihoodProviderWoman($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "SELECT `woman`.*, `bookinglivelihood`.* FROM `bookinglivelihood` JOIN `woman` ON `woman`.`accountId` = `bookinglivelihood`.`womanId` WHERE $condition";
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+	# // Dashboard for woman livelihood-provider booked appointment
+	 public function joinLivelihoodProvider_Woman($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "SELECT `livelihood_provider`.*, `bookinglivelihood`.* FROM `bookinglivelihood` JOIN `livelihood_provider` ON `livelihood_provider`.`accountId` = `bookinglivelihood`.`Livelihood_providerId` WHERE $condition";
+        $query = $this->conn->query($sql);
+        $rows = [];
+        while ($row = $query->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+	
+	#fetchAppointmentDetails Livelihood_providerId
+	
+public function fetchAppointmentDetails($bookingId) {
+    // Assuming you have a database connection stored in $this->conn
+    $stmt = $this->conn->prepare("SELECT * FROM `bookinglivelihood` JOIN `livelihood_provider` WHERE id = ?");
+    $stmt->bind_param("i", $bookingId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return null; // No appointment found
+    }
+}
+
+
+	
+	
+    #Delete record/s
+	
+	
+    public function deleteRecord($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $condition = $this->condition($key, $value, "0", " AND ");
+        $sql = "DELETE FROM `$table` WHERE $condition";
+        $this->conn->query($sql);
+        return $this->conn->affected_rows;
+    }
+
+    #Add record/s
+    public function addRecord($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $keys = implode("`, `", $key);
+        $values = implode("', '", $value);
+        $sql = "INSERT INTO `$table` (`$keys`) VALUES ('$values')";
+        $this->conn->query($sql);
+        return $this->conn->affected_rows;
+    }
+
+    #Update record/s
+    public function updateRecord($table, $args)
+    {
+        $key = array_keys($args);
+        $value = array_values($args);
+        $set = $this->condition($key, $value, "1", ", ");
+        $sql = "UPDATE `$table` SET $set WHERE `$key[0]` = '$value[0]'";
+        $this->conn->query($sql);
+        return $this->conn->affected_rows;
+    }
+
+    public function getCurrentYear()
+    {
+        $sql = "SELECT CURRENT_DATE AS `currentDate`";
+        $query = $this->conn->query($sql);
+        $date = $query->fetch_assoc();
+        $year = date("Y", strtotime($date["currentDate"]));
+        return $year;
+    }
+
+    private function condition($key, $value, $index, $implode)
+    {
+        $condition = [];
+        for ($i = $index; $i < count($key); $i++) {
+            $condition[] = "`" . $key[$i] . "` = '" . $value[$i] . "'";
+            $cond = implode($implode, $condition);
+        }
+        return $cond;
+    }
+}

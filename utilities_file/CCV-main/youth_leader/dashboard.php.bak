@@ -1,0 +1,138 @@
+<?php
+session_start();
+include "../shared/session.lawyer.php";
+require_once "../util/DbHelper.php";
+include "../shared/navbar.lawyer.php";
+// Initialize the database helper
+$dbHelper = new DbHelper();
+
+// Get the logged-in lawyer's account ID from the session
+$accountId = $_SESSION['accountId'];
+
+// Fetch booked appointments for the logged-in lawyer
+$bookedAppointments = $dbHelper->joinLawyerWoman("bookinglawyer", ['lawyerId' => $_SESSION['accountId']]);
+
+// Set the title for the dashboard
+$title = "Lawyer Dashboard";
+
+// style and script
+ob_start();
+?>
+<link rel="stylesheet" href="../assets/css/login.css">
+<link rel="stylesheet" href="../assets/css/bookprevtable.css">
+<!-- Add additional styles for your modal if needed -->
+<?php $styles = ob_get_clean(); ?>
+
+<?php ob_start(); ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Add additional JS for your modal if needed -->
+<?php $scripts = ob_get_clean(); ?>
+
+<?php ob_start(); ?>
+<section class="col">
+  <div class="container">
+    <div class="row justify-content-center pt-20">
+      <br>
+      <br>
+      <h2 class="text-center mb-10 fuchsia" style="margin-left: 30px; margin-top: 60px;">Your Booked Appointments</h2>
+      <?php if (!empty($bookedAppointments)) : ?>
+        <table id="previous" class="table">
+          <thead>
+            <tr>
+              <th>Appointment Id</th>
+              <th>Booker Name</th>
+              <th>Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Specialization</th>
+              <th>Booking Status</th>
+              <th>Reason</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($bookedAppointments as $appointment) : ?>
+              <tr>
+                <td><?php echo htmlspecialchars($appointment['id']) ?></td>
+                <td><?php echo htmlspecialchars($appointment['fname'] . " " . $appointment['lname']) ?></td>
+                <td><?php echo htmlspecialchars(date('F d, Y', strtotime($appointment['Avail_Ldate']))) ?></td>
+                <td><?php echo htmlspecialchars(date('h:i A', strtotime($appointment['Avail_startLtime']))) ?></td>
+                <td><?php echo htmlspecialchars(date('h:i A', strtotime($appointment['Avail_EndLtime']))) ?></td>
+                <td><?php echo htmlspecialchars($appointment['specialize']) ?></td>
+                <td><?php echo htmlspecialchars($appointment['bookingStatus']) ?></td>
+                <td>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reasonModal<?php echo $appointment['id'] ?>">
+                    View
+                  </button>
+
+                  <!-- Modal content for reason -->
+                  <div class="modal fade" id="reasonModal<?php echo $appointment['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="reasonModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="reasonModalLabel">Reason for Booking</h5>
+                          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <?php echo htmlspecialchars($appointment['Reason']) ?>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+           <td>
+                  
+                      
+                  
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#action<?php echo htmlspecialchars($appointment['id']) ?>">
+                      Action
+                    </button>
+
+                    <!-- Modal content for accepting and canceling -->
+                    <div class="modal fade" id="action<?php echo htmlspecialchars($appointment['id']) ?>" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="acceptModalLabel">Choose Action</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          
+                          <div class="modal-footer">
+                            <form method="post" action="../logic/user_booking_process.php">
+                              <input type="hidden" name="bookingId" value="<?php echo htmlspecialchars($appointment['id']) ?>">
+                              <?php if ($appointment['bookingStatus'] == 'Pending') : ?>
+                              <button type="submit" class="btn btn-primary" name="acceptBooking">Accept</button>
+                              <?php endif; ?>
+                              <button type="submit" class="btn btn-primary" name="cancelBooking">Cancel</button>
+                              <a href="edit.Legalcounsel.php" class="btn btn-primary">Edit</a>
+
+                            </form>
+                            <a href="lawyerbook.delete.php?bookingId=<?php echo htmlspecialchars($appointment['id']) ?>" class="btn btn-danger">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php else : ?>
+          <p>No booked appointments available.</p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</section>
+<?php $content = ob_get_clean(); ?>
+
+<?php require_once "../shared/layout.php"; ?>
