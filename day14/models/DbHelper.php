@@ -111,7 +111,10 @@ class DbHelper
                     users.fname,
                     users.lname,
                     users.contactNo,
-                    users.address
+                    users.address,
+                    users.userId,
+                    account.accountId
+
                 FROM users
                 LEFT JOIN account ON users.accountId = account.accountId
                 WHERE users.accountId = ?";
@@ -143,7 +146,8 @@ class DbHelper
                     users.lname,
                     users.contactNo,
                     users.address,
-                    users.accountId
+                    users.accountId,
+                    account.accountId
                     
             
                 FROM users
@@ -157,4 +161,7 @@ class DbHelper
         }
         return $fetchData;
     }
+
+  
+    
 }
