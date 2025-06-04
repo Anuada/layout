@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Elation Caregivers Header</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <img src="./assets/img/main-logo.png" alt="Elation" height="70" width="300"/>
+      </div>
+      <div class="contact-social">
+        <div class="contact-item">
+          <img src="./assets/img/phone.png" alt="Phone Icon" style="width:40px; height:40px; margin-right: 8px;">
+          <span>215-833-4326</span>
+        </div>
+        <div class="contact-item">
+          <img src="./assets/img/email.png" alt="Email Icon" style="width:40px; height:40px; margin-right: 8px;">
+          <span>carline@elationcaregivers.com</span>
+        </div>
+        <div class="language-select-wrapper">
+          <button aria-label="Select language" class="language-select-btn" onclick="toggleDropdown()">
+            <span>EN</span>
+            <i class="fas fa-caret-down"></i>
+          </button>
+          <ul id="language-dropdown" class="language-dropdown hidden">
+            <li onclick="selectLanguage('en')">English</li>
+            <li onclick="selectLanguage('es')">Español</li>
+            <li onclick="selectLanguage('fr')">Français</li>
+          </ul>
+        </div>
+        <div class="social-icons" role="list">
+          <a aria-label="Facebook" class="facebook" href="#" role="listitem"><i class="fab fa-facebook-f"></i></a>
+          <a aria-label="Twitter" class="twitter" href="#" role="listitem"><i class="fab fa-twitter"></i></a>
+          <a aria-label="Instagram" class="instagram" href="#" role="listitem"><i class="fab fa-instagram"></i></a>
+          <a aria-label="LinkedIn" class="linkedin" href="#" role="listitem"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <!-- HAMBURGER BUTTON -->
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Why Choose Us</a></li>
+        <li><a href="#">What We Offer</a></li>
+        <li><a href="#" style="text-decoration: underline;">Apply Here</a></li>
+        <li><a href="#">Pay Online</a></li>
+        <li><a href="#">Get In Touch</a></li>
+      </ul>
+    </nav>
+
+    <div class="slideshow-background">
+        <div class="slideshow-slide"></div>
+      </div>
+      
+  </header>
+
+  <!-- Scripts -->
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById("language-dropdown");
+      dropdown.classList.toggle("show");
+    }
+
+    function selectLanguage(lang) {
+      alert("Language selected: " + lang);
+    }
+
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #222222;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  .top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: #fff;
+  }
+
+  .logo img {
+    max-width: 230px;
+    height: auto;
+    display: block;
+  }
+
+  .contact-social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #222222;
+    white-space: nowrap;
+  }
+
+  .contact-item i {
+    color: #1a237e;
+    font-size: 18px;
+  }
+
+  .language-select {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .language-select img {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+  }
+
+  .language-select i {
+    font-size: 10px;
+    color: #222;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #fff;
+    border-radius: 0;
+  }
+
+  .social-icons a.facebook { background: #3b5998; }
+  .social-icons a.twitter { background: #000; }
+  .social-icons a.instagram {
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  }
+  .social-icons a.linkedin { background: #0077b5; }
+
+  nav {
+    background: #004225;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nav-links li {
+    position: relative;
+  }
+
+  .nav-links li + li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #3a7a4a;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 20px;
+    color: #fff;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    text-decoration: underline;
+  }
+
+  .language-dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    display: none;
+  }
+
+  .language-dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .language-dropdown li:hover {
+    background: #f0f0f0;
+  }
+
+  .language-dropdown.show {
+    display: block;
+  }
+
+  .language-select-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #004225;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .top-bar {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .contact-social {
+      gap: 10px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .hamburger {
+      display: block;
+      margin-left: auto;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: #004225;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    nav a {
+      padding: 14px;
+      border-top: 1px solid #3a7a4a;
+    }
+    
+  }
+
+  .slideshow-background {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  .slideshow-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain; /* show full image */
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: slideshow 15s infinite steps(1);
+  }
+  
+  
+  @keyframes slideshow {
+    0% {
+      background-image: url('../img/banner.jpg');
+    }
+    33% {
+      background-image: url('../img/btm-2.png');
+    }
+    66% {
+      background-image: url('../img/btm-meal-preparation.png');
+    }
+    100% {
+      background-image: url('../img/btm-medication-management.png');
+    }
+  }
+  
+
